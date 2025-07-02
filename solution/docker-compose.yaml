@@ -11,3 +11,13 @@ services:
     - 9393:9300
     environment:
     - CSVSERVER_BORDER=Orange
+  prometheus:
+    image: prom/prometheus:v2.45.2
+    container_name: prometheus
+    volumes:
+    - type: bind
+      source: ./prometheus.yml
+      target: /etc/prometheus/prometheus.yml'
+      read_only: true
+    ports:
+    - 9090:9090
