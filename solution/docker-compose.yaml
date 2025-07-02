@@ -1,0 +1,13 @@
+services:
+  csvserver:
+    image: infracloudio/csvserver:latest
+    container_name: csvserver
+    volumes:
+    - type: bind
+      source: ./inputFile
+      target: /csvserver/inputdata
+      read_only: true
+    ports:
+    - "9393:9300"
+    environment:
+    - CSVSERVER_BORDER=Orange
